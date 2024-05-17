@@ -1,10 +1,19 @@
 public class Card {
     //suit -> spade, hearts
-    public
+    public String Suit;
 
     //value -> 1-11
-    public
+    public int Value;
 
     //name ->Ace, 2, 3, ... Jack, Queen, King
-    public
+    public String Name;
+
+    public Card(String pSuit, int pValue, String pName){
+        Suit = pSuit;
+        Value = pValue;
+        Name = pName;
+    }
+
+    public void display(){System.out.println("Card is the " + Name + " of " + Suit + ", valued at:" + Value);}
+
 }
