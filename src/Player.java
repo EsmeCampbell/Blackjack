@@ -11,7 +11,7 @@ public class Player {
     //the players cards
     public Card[] hand;
 
-    public Player(){
+    public Player(boolean pisDealer, int pcardsSum, boolean isBust, Card[] phand){
 
     }
 
