@@ -11,6 +11,8 @@ public class Casino {
     public Player Dealer;
 
     public Card[] deck;
+    public int hand = 3;
+    public int deck2 = 4;
     public static void main(String[] args) {
         Casino x = new Casino();
     }
@@ -29,7 +31,7 @@ public class Casino {
             }
         }
         Shuffle();
-        printDeck();
+        //printDeck();
 
         You = new Player(false,0,false, "Your");
 
@@ -42,20 +44,7 @@ public class Casino {
         You.print();
         Jai.print();
         Dealer.print();
-// Source: https://www.w3schools.com/java/java_user_input.asp
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Would you like to hit or stand? Please respond: 'hit' or 'stand'");
-
-        String userName = myObj.nextLine();
-        System.out.println("You chose to " + userName);
-
-        if(userName.equals("hit")){
-            You.hand[0] = deck[2];
-            You.hand[1] = deck[3];
-            You.hand[2] = deck[6];
-            You.CardsSum = You.hand[0].Value + You.hand[1].Value + You.hand[2].Value;
-            You.print();
-        }
+        ask();
 
     }
 
@@ -91,5 +80,28 @@ public class Casino {
             deck[0] = deck[esme];
             deck[esme] = temp;
         }
+    }
+    public void ask(){
+        // Source: https://www.w3schools.com/java/java_user_input.asp
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Would you like to hit or stand? Please respond: 'hit' or 'stand'");
+
+        String userName = myObj.nextLine();
+        System.out.println("You chose to " + userName);
+
+        if(userName.equals("hit")){
+            Card[] newArray = new Card[You.hand.length + 1];
+            for(int i =0; i< newArray.length -1; i++){
+                newArray[i] = You.hand[i];
+            }
+            newArray[newArray.length -1] = deck[deck2];
+            You.hand = newArray;
+            hand++;
+            deck2++;
+            You.CardsSum = You.CardsSum + deck[deck2-1].Value;
+            You.print();
+
+        }
+
     }
 }
